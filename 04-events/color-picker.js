@@ -14,7 +14,7 @@ class ColorPickerElement extends HTMLElement {
 
     drawPicker(div, pickerElement) {
         let colors = {
-            'A': "#50c236", 
+            'A': "#50c236",
             'B': "#16856f", 
             'C': "#efc306", 
             'D': "#025594", 
@@ -23,6 +23,20 @@ class ColorPickerElement extends HTMLElement {
             'G': "#a85642", 
             'H': "#969696"
         };
+        
+        window.addEventListener("keypress", function(event) {
+            if (event.target != pickerElement) return;
+            var key = event.key.toUpperCase();
+            if (key in colors) {
+                var color = colors[key];
+                const outerEvent = new CustomEvent('pick-color', {
+                    bubbles: true,
+                    detail: { color: color }
+                });
+                pickerElement.dispatchEvent(outerEvent);
+            }
+        });
+
         Object.entries(colors).forEach(pair => {
             const [key, color] = pair;
             let button = document.createElement('button');
