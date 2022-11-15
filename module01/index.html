@@ -4,14 +4,40 @@
         <title>Hello, World!</title>
     </head>
     <body>
-        <hello-world></hello-world>
+        <hello-world name="Modern Frontends LIVE!" 
+        repeat="3"
+        a
+        b=""
+        c=" "
+        d="true"
+        >
+            <ul>
+                <li>One</li>
+                <li>Two</li>
+                <li>Three</li>
+            </ul>
+        </hello-world>
     </body>
     <script>
         class HelloWorldElement extends HTMLElement {
             constructor() {
-                super();
-                this.innerHTML = "Hello, World!";
+                super();                
             }
+            connectedCallback() {
+                let name = this.getAttribute("name");
+                let repeat = parseInt(this.getAttribute("repeat"));
+                for(var i = 0; i < repeat; i++) {
+                    let hello = document.createElement("p");
+                    hello.innerHTML = `Hello, ${name}`;
+                    this.appendChild(hello);
+                }
+                console.log(typeof(this.getAttribute("a")));
+                console.log(typeof(this.getAttribute("b")));
+                console.log(typeof(this.getAttribute("c")));
+                console.log(typeof(this.getAttribute("d")));
+                console.log(typeof(this.getAttribute("e")));
+            }
+
         }
         customElements.define('hello-world', HelloWorldElement);
     </script>
