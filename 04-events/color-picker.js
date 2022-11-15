@@ -13,13 +13,21 @@ class ColorPickerElement extends HTMLElement {
     }
 
     drawPicker(div, pickerElement) {
-        let colors = [
-            "#50c236", "#16856f", "#efc306", "#025594", 
-            "#b51f8f", "#ff6c53", "#a85642", "#969696"
-        ];
-        colors.forEach(color => {
+        let colors = {
+            'A': "#50c236", 
+            'B': "#16856f", 
+            'C': "#efc306", 
+            'D': "#025594", 
+            'E': "#b51f8f", 
+            'F': "#ff6c53", 
+            'G': "#a85642", 
+            'H': "#969696"
+        };
+        Object.entries(colors).forEach(pair => {
+            const [key, color] = pair;
             let button = document.createElement('button');
             button.style.backgroundColor = color;
+            button.innerHTML = key;
             button.addEventListener('click', function() {
                 const outerEvent = new CustomEvent('pick-color', {
                     bubbles: true,
