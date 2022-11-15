@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Templates</title>
+  </head>
+  <body>
+    <a href="https://www.google.co.uk/" id="google-link">Google</a>
+  </body>
+  <script>
+    var link = document.getElementById("google-link");
+    link.addEventListener("click", sayHello);
+
+    function sayHello() {
+        if(confirm('Are you sure?')) {
+            alert('You\'re sure!');
+            return true;
+        } else {
+            alert('Nope!');
+            return false;
+        }
+    }
+  </script>
+</html>
