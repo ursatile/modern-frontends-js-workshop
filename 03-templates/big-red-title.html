@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Templates</title>
+</head>
+<body>
+    <scary-warning>
+        ping?
+        <h1>Warning!</h1>
+        <p>Do not proceed!</p>
+        <ul>
+            <li>You will die</li>
+            <li>and it will hurt</li>
+            <li>the whole time you are dying...</li>
+        </ul>        
+    </scary-warning>
+
+    <big-red-title>Hey! A Big Red Title</big-red-title>
+    <Script>
+        class ScaryWarningElement extends HTMLElement {
+            constructor() {
+                super();
+            }
+            connectedCallback() {
+                let template = document.createElement('template');
+                template.innerHTML = `<div style="border: 5px solid red; background-color: black; color: white; font-weight: bold;"><slot></slot></div>`;
+                let node = template.content.cloneNode(true);
+                this.attachShadow({ mode: 'open' }).appendChild(node);
+            }
+        }
+
+        class BigRedTitleElement extends HTMLElement {
+            constructor() {
+                super();
+            }
+
+            connectedCallback() {
+                let template = document.createElement('template');
+                template.innerHTML = `<slot style="font-size: 200%; color: red;"></slot>`;
+                let node = template.content.cloneNode(true);
+                this.attachShadow({ mode: 'open' }).appendChild(node);
+            }
+        }
+
+        customElements.define("big-red-title", BigRedTitleElement);
+        customElements.define("scary-warning", ScaryWarningElement); 
+
+    </Script>
+</body>
+</html>

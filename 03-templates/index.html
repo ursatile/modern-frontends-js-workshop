@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Templates</title>
+</head>
+<body>
+    <input type="button" id="btn" value="Click Me" />
+    
+    <div id="container"></div>
+    
+    <template>
+        <img src="minion.png" />
+        <h1>Banana!</h1>
+    </template>
+
+    <script>
+        var btn = document.getElementById("btn");
+        btn.addEventListener("click", function() {
+            var template = document.querySelector("template");
+            var newElement = template.content.cloneNode(true);
+            var container = document.getElementById("container");
+            container.appendChild(newElement);
+        });
+    </script>
+</body>
+</html>
