@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello, World!</title>
+    </head>
+    <body>
+        <friendly-greeting></friendly-greeting>
+        <friendly-greeting shout></friendly-greeting>
+        <friendly-greeting name="  "></friendly-greeting>
+        <friendly-greeting name="Bob"></friendly-greeting>
+        <friendly-greeting name="Bob" lang="uk"></friendly-greeting>
+        <friendly-greeting name="Bob" lang="fr"></friendly-greeting>
+        <friendly-greeting name="Bob" lang="uk" shout></friendly-greeting>
+    </body>
+    <script>
+        class FriendlyGreeting extends HTMLElement {
+            constructor() {
+                super();
+            }
+            connectedCallback() {
+                const name = this.getAttribute('name')?.trim() || 'World';
+                const lang = this.getAttribute('lang') || 'en';
+                const shout = this.hasAttribute('shout');
+                const greeting = this.getGreeting(name, lang, shout);
+                let element = document.createElement('p');
+                element.innerHTML = greeting;
+                this.appendChild(element);
+            }
+            getGreeting(name, lang, shout) {
+                const greetings = {
+                    en: `Hello, ${name}!`,
+                    uk: `Привіт, ${name}!`,
+                };
+                const greeting = greetings[lang] || greetings['en'];
+                return shout ? greeting.toUpperCase() : greeting;
+            }
+        }
+        customElements.define('friendly-greeting', FriendlyGreeting);
+    </script>
+</html>

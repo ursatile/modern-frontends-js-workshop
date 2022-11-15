@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello, World!</title>
+    </head>
+    <body>
+        <p is="word-count">This paragraph has five words.</p>
+        <p is="word-count">This paragraph is a little longer and contains ten words.</p>
+        <p is="word-count">This is the longest paragraph in the document. It contains 
+            twenty words. Some of the words are not very interesting.</p>
+    </body>
+    <script>
+        class ParagraphWordCountElement extends HTMLParagraphElement {
+            constructor() {
+                super();
+            }
+            connectedCallback() {                
+                this.updateWordCount();
+            }
+            updateWordCount() {               
+                let words = this.innerHTML.split(" ").filter(word => word.length > 0);
+                console.log(words);
+                let wordCount = words.length;
+                console.log(wordCount);
+                this.title = `${wordCount} words`;                
+            }
+        }
+        customElements.define('word-count', ParagraphWordCountElement, { extends: "p" });
+    </script>
+</html>
