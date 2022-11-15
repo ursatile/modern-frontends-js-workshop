@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello, World!</title>
+    </head>
+    <body>
+        <input type="text" name="name" id="name-input" />
+        <button id="change-name">Change Name</button>
+        <hr />
+        <hello-world name="Modern Frontends LIVE!"></hello-world>
+    </body>
+    <script>
+        class HelloWorldElement extends HTMLElement {
+            constructor() {
+                super();                
+            }
+            connectedCallback() {
+                console.log('connectedCallback');
+                let name = this.getAttribute("name");
+                let hello = document.createElement("p");
+                hello.innerHTML = `Hello, ${name}`;
+                this.appendChild(hello);
+            }
+
+            static get observedAttributes() {
+                return ["name"];
+            }
+
+            attributeChangedCallback(name, oldValue, newValue) {
+                console.log('attributeChangedCallback');
+                console.log(name, oldValue, newValue);
+                switch(name) {
+                    case "name":
+                        let p = this.querySelector("p");
+                        if (p != null) p.innerHTML = `Hello, ${newValue}`;
+                        break;
+                }
+            }
+        }
+        customElements.define('hello-world', HelloWorldElement);
+        document.getElementById("change-name").addEventListener("click", () => {
+            let name = document.getElementById("name-input").value;
+            let hello = document.querySelector("hello-world");
+            hello.setAttribute("name", name);
+        });
+    </script>
+</html>
