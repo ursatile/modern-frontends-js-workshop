@@ -11,8 +11,12 @@ div {
         margin: 1px;
         padding: 0;
 
-        &.O {
-            background-color: blue;
-        }
+        &.O { background-color: blue;}
+        &.I { background-color: magenta; }
+        &.T { background-color: turquoise; }
+        &.S { background-color: green; }
+        &.Z { background-color: red; }
+        &.J { background-color: orange; }
+        &.L { background-color: yellow; }
     }
 }
