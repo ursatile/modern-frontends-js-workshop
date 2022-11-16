@@ -1,6 +1,7 @@
 
 import { HappyFace, Flag as GermanFlag, PinkFlower } from './shapes.js';
 import UkrainianFlag from './flag-ua.js';
+import PolishFlag from './flag-pl.js';
 
 document.getElementById('canvas').addEventListener("click", drawShape);
 document.querySelectorAll('input[type=radio]').forEach(input => input.addEventListener("change", chooseShape));
@@ -19,6 +20,7 @@ function drawShape(e) {
         case 'happy-face': return HappyFace('canvas', x, y);
         case 'flag-de': return GermanFlag('canvas', x, y);
         case 'flag-ua': return UkrainianFlag('canvas', x, y);
+        case 'flag-pl': return PolishFlag('canvas', x, y);
         case 'pink-flower': return PinkFlower('canvas', x, y);
     }
 }
