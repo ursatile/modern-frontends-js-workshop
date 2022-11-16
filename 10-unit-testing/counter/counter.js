@@ -5,7 +5,8 @@ class MyCounterElement extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
-        this.renderer = new Renderer(this.shadowRoot);
+        let color = this.getAttribute("color");
+        this.renderer = new Renderer(this.shadowRoot, color);
     }
 
     connectedCallback() {

@@ -22,9 +22,9 @@ describe('engine resets to correct value', () => {
     });
 });
 
-//TODO:
-// Unit test for increment
-// Unit test for decrement
+// TODO: Unit test for increment
+
+// TODO: Unit test for decrement
 
 
 

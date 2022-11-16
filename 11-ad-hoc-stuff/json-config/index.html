@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JS Sucks!</title>
+  </head>
+  <body>
+    <my-custom-component config="red-consolas"></my-custom-component>
+    <my-custom-component config="blue-arial"></my-custom-component>
+    <my-custom-component config="green-comic-sans"></my-custom-component>
+    
+    <script type="module" src="my-custom-component.js"></script>
+    <script id="red-consolas" type="application/json">
+      {
+        "message": "Hello, World!",
+        "color": "red",
+        "fontFamily": "Consolas"
+      }
+    </script>
+    <script id="blue-arial" type="application/json">
+      {
+        "message": "Blue Arial Rocks!",
+        "color": "blue",
+        "fontFamily": "Arial"
+      }
+    </script>
+    <script id="green-comic-sans" type="application/json" src="green-comic-sans.json">
+
+    </script>
+  </body>
+</html>

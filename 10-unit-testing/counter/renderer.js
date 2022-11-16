@@ -5,7 +5,8 @@ export default class Renderer {
     #decrementButton;
     #resetButton;
     
-    constructor(shadowRoot) {
+    constructor(shadowRoot, color) {
+        this.color = color;
         this.root = shadowRoot;
     } 
 
@@ -23,13 +24,13 @@ export default class Renderer {
 
     render(engine) {
         console.log(styles);
-        // const cssLink = document.createElement('link');
-        // cssLink.setAttribute("rel", "stylesheet");
-        // cssLink.setAttribute("href", "counter.css");
-        // this.root.appendChild(cssLink);
-        const style = document.createElement("style");
-        style.innerHTML = styles;
-        this.root.appendChild(style);
+        const cssLink = document.createElement('link');
+        cssLink.setAttribute("rel", "stylesheet");
+        cssLink.setAttribute("href", `counter.css`);
+        this.root.appendChild(cssLink);
+        // const style = document.createElement("style");
+        // style.innerHTML = styles;
+        // this.root.appendChild(style);
 
         let wrapper = document.createElement('div');
         wrapper.setAttribute("class", "counter-wrapper");
@@ -49,6 +50,13 @@ export default class Renderer {
         this.#resetButton.setAttribute('id', 'reset-button');
         this.#resetButton.innerHTML = 'RESET';
         wrapper.appendChild(this.#resetButton);
+
+        if (this.color) {
+            this.#incrementButton.style.backgroundColor = this.color;
+            this.#decrementButton.style.backgroundColor = this.color;
+            this.#resetButton.style.backgroundColor = this.color;
+            this.span.color = this.color;
+        }
         this.root.appendChild(wrapper);
         this.update(engine);
     }
