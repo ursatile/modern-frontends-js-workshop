@@ -22,9 +22,13 @@ describe('engine resets to correct value', () => {
     });
 });
 
-// TODO: Unit test for increment
-
-// TODO: Unit test for decrement
-
+describe('increment engine works', () => {
+    let values = [0,5,10,15,20];
+    test.each(values)('when default is %d', (value) => {
+        let e = new CountingEngine(value,value);
+        e.increment();
+        expect(e.count).toBe(value + 1);
+    });
+});
 
 

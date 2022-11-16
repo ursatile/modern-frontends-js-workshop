@@ -1,7 +1,7 @@
 import CountingEngine from "./counting-engine.js";
 import Renderer from "./renderer.js";
 
-class MyCounterElement extends HTMLElement {
+export default class MyCounterElement extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
@@ -10,7 +10,7 @@ class MyCounterElement extends HTMLElement {
     }
 
     connectedCallback() {
-        let defaultValue = parseInt(this.getAttribute("default-value"));
+        let defaultValue = parseInt(this.getAttribute("default-value")) || 0;
         let count = defaultValue;
         this.engine = new CountingEngine(count, defaultValue);
         this.renderer.render(this.engine);

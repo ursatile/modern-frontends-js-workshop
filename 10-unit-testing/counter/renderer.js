@@ -24,13 +24,13 @@ export default class Renderer {
 
     render(engine) {
         console.log(styles);
-        const cssLink = document.createElement('link');
-        cssLink.setAttribute("rel", "stylesheet");
-        cssLink.setAttribute("href", `counter.css`);
-        this.root.appendChild(cssLink);
-        // const style = document.createElement("style");
-        // style.innerHTML = styles;
-        // this.root.appendChild(style);
+        // const cssLink = document.createElement('link');
+        // cssLink.setAttribute("rel", "stylesheet");
+        // cssLink.setAttribute("href", `counter.css`);
+        // this.root.appendChild(cssLink);
+        const style = document.createElement("style");
+        style.innerHTML = styles;
+        this.root.appendChild(style);
 
         let wrapper = document.createElement('div');
         wrapper.setAttribute("class", "counter-wrapper");
